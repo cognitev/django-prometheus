@@ -110,7 +110,7 @@ class TestMiddlewareMetrics(PrometheusTestCaseMixin, SimpleTestCase):
             r = self.saveRegistry()
             self.client.get('/')
             self.client.get('/file')
-            self.assertMetricDiff(r, 1, M('responses_streaming_total'))
+            self.assertMetricDiff(r, 1, M('responses_streaming_total'), hostname=socket.gethostname())
             self.assertMetricDiff(
                 r, 1,
                 M('responses_body_total_bytes_bucket'), le='+Inf', hostname=socket.gethostname())
