@@ -43,6 +43,7 @@ class PrometheusBeforeMiddleware(MiddlewareMixin):
     """Monitoring middleware that should run before other middlewares."""
 
     def process_request(self, request):
+        print("entered requests_total !!!!!!!!")
         requests_total.labels(socket.gethostname()).inc()
         request.prometheus_before_middleware_event = Time()
 
