@@ -117,6 +117,8 @@ class PrometheusTestCaseMixin(object):
             metric_name, frozen_registry, **labels)
         current_value = self.getMetric(metric_name, registry=registry,
                                        **labels)
+        print("frozen_registry: {}".format(frozen_registry))
+        print("registry: {}".format(registry))
         print("metric_name: {}".format(metric_name))
         print("saved_value: {} \ncurrent_value: {}".format(saved_value, current_value))
         self.assertFalse(
